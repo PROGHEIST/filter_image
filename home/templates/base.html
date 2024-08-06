@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <title>{% block title %}Filter Image{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <nav class="bg-white shadow-md py-4">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="{% static 'img/logo-app.jfif' %}" alt="Filter Image Logo" class="h-10 w-10 mr-2 rounded-full">
+                <span class="text-xl font-bold text-gray-800">Filter Image</span>
+            </div>
+            <div class="flex items-center">
+                {% if user.is_authenticated %}
+                    <div class="user-avatar bg-blue-500 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold text-xl">
+                        {{ user.username|slice:":1"|upper }}
+                    </div>
+                    <a href="{% url 'logout' %}" class="ml-4 text-gray-700 hover:text-gray-900">Logout</a>
+                {% else %}
+                    <a href="{% url 'login' %}" class="text-gray-700 hover:text-gray-900">Login</a>
+                    <a href="{% url 'signup' %}" class="ml-4 text-gray-700 hover:text-gray-900">Sign Up</a>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+    <div class="container mx-auto px-4 py-8">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

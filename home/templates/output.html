@@ -1,0 +1,30 @@
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Output Image</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+{% extends "base.html" %}
+
+{% block content %}
+<div class="bg-white shadow-md rounded-lg p-6 mx-auto max-w-lg mt-8">
+    <h2 class="text-2xl font-bold mb-4 text-center font-sans">Filtered Image</h2>
+    <div class="flex justify-center mb-4">
+        <img src="{{ img.image.url }}" alt="Filtered Image" class="max-w-full h-auto rounded">
+    </div>
+    <div class="flex justify-center">
+        <a href="{{ img.image.url }}" download="filtered_image.png" class="bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-700 transition duration-300">
+            Download Image
+        </a>
+    </div>
+</div>
+{% endblock %}
+
+    </body>
+</html>
